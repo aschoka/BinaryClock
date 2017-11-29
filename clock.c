@@ -9,7 +9,7 @@ int binconvert(int);
 int main (void)
 {
 
-
+//Initialization of wiringPi library and error check
 if (wiringPiSetup () == -1)
         exit (1);
 
@@ -33,14 +33,15 @@ char *hour;
 char *min;
 char *sec;
 const char s[2] = ":";
-
 printf("Enter the Current Time (HH:MM:SS) : ");
 fgets(time, sizeof(time),stdin);
 
+//Grabbing user input
 hour = strtok( time, s );
 min  = strtok( NULL, s);
 sec = strtok( NULL, s);
 
+//Char to int conversion statements        
 int mint = atoi(min);
 int hourt = atoi(hour);
 int sect = atoi(sec);
@@ -56,7 +57,7 @@ do {
         int minarr[9];
         int secarr[9];
 
-        //DEBUGGING Print Current Time Code
+        //Print Current Time Code.  Used for debugging.  Prints binary time to screen each loop iteration.   
         printf("H: %d   M: %d   S: %d   \n",binhour,binmin,binsec);
 
         //Hour Pins (WPi Pins 0,1,2,3,4)
@@ -126,16 +127,18 @@ do {
                 }
         }
 
-        //Delay Code
+        //Delay Code.  Adjust this value (in msec) based on the execution speed of your platform.
         delay (950);
 
-} while(wiringPiSetup () != 1);
+  //Main Clock function exit condition.  
+} while(wiringPiSetup () != 1);  
 
 
 
 return 0;
 }
 
+//Binary conversion function
 int binconvert(int dig)
 {
         if ( dig == 0)
