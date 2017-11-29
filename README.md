@@ -15,3 +15,5 @@ A guide to using the GPIO pins on the Model A+, B+, 2B, and 3B is here: https://
 
 
 In order to correctly wire the LEDs to the GPIO pins on the RPi, refer to the diagrams here: http://wiringpi.com/pins/ , or simply call "gpio readall" from the command line.  The pin numbers used in the code are the WiringPi pin numbers, which are different than the physical board pin numbers.  
+
+The main clock.c file must be compiled with the following options: gcc clock.c -o clock -l wiringPi
