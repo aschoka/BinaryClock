@@ -133,8 +133,6 @@ do {
   //Main Clock function exit condition.  
 } while(wiringPiSetup () != 1);  
 
-
-
 return 0;
 }
 
@@ -150,6 +148,3 @@ int binconvert(int dig)
                 return (dig % 2 + 10 * binconvert(dig / 2));
         }
 }
-
-
-
